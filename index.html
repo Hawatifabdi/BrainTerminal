@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hawatif's Brain Terminal</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: monospace;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    .glitch {
+      font-size: 2em;
+      animation: flicker 1.5s infinite;
+      color: #0f0;
+      white-space: pre;
+    }
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .ascii {
+      white-space: pre;
+      font-size: 12px;
+      color: #00cc00;
+      margin-bottom: 20px;
+    }
+    .terminal {
+      background-color: #000000;
+      border: 1px solid #00ff00;
+      padding: 15px;
+      margin-top: 20px;
+    }
+    .prompt {
+      color: #0f0;
+    }
+    .secret {
+      display: none;
+      margin-top: 10px;
+      color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ascii">
+    <!-- ASCII version of KamiLimu logo (simplified) -->
+     ____  _     _ _ _                 
+    |  _ \| |__ (_) | |_   _  ___ ___  
+    | | | | '_ \| | | | | | |/ __/ _ \ 
+    | |_| | | | | | | | |_| | (_|  __/ 
+    |____/|_| |_|_|_|_|\__,_|\___\___| 
+          KAMILIMU  // Hacked Terminal
+  </div>
+
+  <div class="glitch">Initializing Brain Terminal...</div>
+
+  <div class="terminal" id="terminal">
+    <div class="prompt" id="typed-text"></div>
+  </div>
+
+  <div class="secret" id="secret-message">
+    🧠 <strong>Surprise!</strong> You found the hidden thought: "Keep learning. Even if it’s hard. You’re doing amazing, Hawatif."
+  </div>
+
+  <script>
+    const messages = [
+      "👩🏽‍💻 Welcome to Hawatif's brain...",
+      "🧭 Month recap: Academic Excellence, Git, Cybersecurity...",
+      "📖 Dr. C's Oxford story: Overwhelming at first, then inspiring.",
+      "🎯 Academic success = strategies + support + KamiLimu.",
+      "🔐 Cybersecurity was scary, but I'm pushing through.",
+      "⚔️ Loved learning about Offensive & Defensive security!",
+      "🌱 I'm a beginner, yes — but I’m learning every day.",
+      "🧠 Version control was my favourite topic!",
+      "✨ Initiating learning logs...",
+      "✔️ You're doing better than you think. Keep going.",
+      "Type: `unlock` below to reveal a secret thought..."
+    ];
+
+    let i = 0;
+    const textElement = document.getElementById("typed-text");
+
+    function typeLine() {
+      if (i < messages.length) {
+        const line = messages[i];
+        let charIndex = 0;
+        const interval = setInterval(() => {
+          if (charIndex < line.length) {
+            textElement.textContent += line[charIndex];
+            charIndex++;
+          } else {
+            clearInterval(interval);
+            textElement.innerHTML += "<br><br>";
+            i++;
+            setTimeout(typeLine, 600);
+          }
+        }, 40);
+      }
+    }
+
+    typeLine();
+
+    // Secret terminal command
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const input = prompt("Enter terminal command:");
+        if (input && input.toLowerCase().trim() === "unlock") {
+          document.getElementById("secret-message").style.display = "block";
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
