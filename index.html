@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,12 +47,7 @@
 <body>
 
   <div class="ascii">
-    <!-- ASCII version of KamiLimu logo (simplified) -->
-     ____  _     _ _ _                 
-    |  _ \| |__ (_) | |_   _  ___ ___  
-    | | | | '_ \| | | | | | |/ __/ _ \ 
-    | |_| | | | | | | | |_| | (_|  __/ 
-    |____/|_| |_|_|_|_|\__,_|\___\___| 
+     
           KAMILIMU  // Hacked Terminal
   </div>
 
@@ -65,23 +61,79 @@
     🧠 <strong>Surprise!</strong> You found the hidden thought: "Keep learning. Even if it’s hard. You’re doing amazing, Hawatif."
   </div>
 
+  <audio id="type-sound" src="https://www.soundjay.com/mechanical/sounds/keyboard-1.mp3" preload="auto"></audio>
+
   <script>
     const messages = [
-      "👩🏽‍💻 Welcome to Hawatif's brain...",
-      "🧭 Month recap: Academic Excellence, Git, Cybersecurity...",
-      "📖 Dr. C's Oxford story: Overwhelming at first, then inspiring.",
-      "🎯 Academic success = strategies + support + KamiLimu.",
-      "🔐 Cybersecurity was scary, but I'm pushing through.",
-      "⚔️ Loved learning about Offensive & Defensive security!",
-      "🌱 I'm a beginner, yes — but I’m learning every day.",
-      "🧠 Version control was my favourite topic!",
-      "✨ Initiating learning logs...",
-      "✔️ You're doing better than you think. Keep going.",
+      "👩🏽‍💻 Welcome to Hawatif’s Brain Terminal v1.0.7...",
+      "🔍 Scanning cognitive system...",
+      "✅ Reflection logs detected from the past month.",
+      "💾 Loading modules: mindset | effort | curiosity | growth",
+
+      "📚 MODULE: Academic Excellence",
+      "🧠 Lecture by Dr. C (Oxford Experience)",
+      "  > Insight: Even the best start off overwhelmed. Progress is personal.",
+      "💡 Key Takeaways:",
+      "  - Start with small wins.",
+      "  - Environment matters — find your tribe.",
+      "  - You’re not 'bad at something' — you're just early.",
+      "📘 Applied in University:",
+      "  - Asking questions without shame.",
+      "  - Breaking study into focused sessions.",
+      "  - Practicing Retrieval Method — not just rereading.",
+
+      "🛡 MODULE: Cybersecurity",
+      "⚠️ System Alert: User was a COMPLETE beginner.",
+      "📈 Status: Learning activated...",
+      "Topics Covered:",
+      "  - What is security? What are you protecting?",
+      "  - Offensive vs Defensive security",
+      "  - Types of attacks, firewalls, ethical hacking",
+      "🌪 Real talk:",
+      "  > 'I was confused at first. Like… completely overwhelmed. But I didn’t quit.'",
+      "💪 Progress:",
+      "  - Understood red team vs blue team",
+      "  - Learnt practical security thinking",
+
+      "💻 MODULE: Git & GitHub",
+      "⏱ Loading: My favourite lesson 🔁",
+      "Learned:",
+      "  - Git init / commit / push / pull",
+      "  - What version control really means (saving changes like magic)",
+      "✨ Why I loved it:",
+      "  > 'It felt like being a real developer for the first time.'",
+      "  > 'It made me feel *in control* of my code.'",
+      "📂 Mindset Upgrade:",
+      "  - Don’t fear mistakes, just commit and try again",
+      "  - README files = love letters to your future self",
+
+      "🧠 MODULE: Self-Reflection",
+      "👶 I was a beginner at almost everything.",
+      "😰 At times, I felt behind. Slow. Overwhelmed.",
+      "🔥 But I kept showing up. I kept trying.",
+      "🚀 Progress isn't loud. It's quiet. It’s you — learning in silence.",
+      "🛠 Debugging my own mindset:",
+      "  - “I don’t get this” → “I don’t get this *yet*”",
+      "  - “They’re better” → “They’ve just practiced more”",
+      "🎯 My new rule: Show up. Do something. That’s enough.",
+
+      "🏙 MODULE: KamiLimu Framework",
+      "🧩 My reflections:",
+      "  - Growth mindset isn’t optional — it’s *required*.",
+      "  - Support systems matter.",
+      "  - Excellence is a team sport.",
+      "🛡 I learned to:",
+      "  - Speak up in group sessions",
+      "  - Ask for help without shame",
+      "  - Share my wins and struggles honestly",
+      "✨ Core upgrade installed: “I deserve to be here.”",
+
       "Type: `unlock` below to reveal a secret thought..."
     ];
 
     let i = 0;
     const textElement = document.getElementById("typed-text");
+    const typeSound = document.getElementById("type-sound");
 
     function typeLine() {
       if (i < messages.length) {
@@ -91,19 +143,20 @@
           if (charIndex < line.length) {
             textElement.textContent += line[charIndex];
             charIndex++;
+            typeSound.currentTime = 0;
+            typeSound.play();
           } else {
             clearInterval(interval);
             textElement.innerHTML += "<br><br>";
             i++;
-            setTimeout(typeLine, 600);
+            setTimeout(typeLine, 800);
           }
-        }, 40);
+        }, 35);
       }
     }
 
     typeLine();
 
-    // Secret terminal command
     document.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
         const input = prompt("Enter terminal command:");
