@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hawatif's Brain Terminal</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: monospace;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    .glitch {
+      font-size: 2em;
+      animation: flicker 1.5s infinite;
+      color: #0f0;
+      white-space: pre;
+    }
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .ascii {
+      white-space: pre;
+      font-size: 12px;
+      color: #00cc00;
+      margin-bottom: 20px;
+    }
+    .terminal {
+      background-color: #000000;
+      border: 1px solid #00ff00;
+      padding: 15px;
+      margin-top: 20px;
+    }
+    .prompt {
+      color: #0f0;
+    }
+    .secret {
+      display: none;
+      margin-top: 10px;
+      color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ascii">
+     
+          KAMILIMU  // Hacked Terminal
+  </div>
+
+  <div class="glitch">Initializing Brain Terminal...</div>
+
+  <div class="terminal" id="terminal">
+    <div class="prompt" id="typed-text"></div>
+  </div>
+
+  <div class="secret" id="secret-message">
+    🧠 <strong>Surprise!</strong> You found the hidden thought: "Keep learning. Even if it’s hard. You’re doing amazing, Hawatif."
+  </div>
+
+  <audio id="type-sound" src="https://www.soundjay.com/mechanical/sounds/keyboard-1.mp3" preload="auto"></audio>
+
+  <script>
+    const messages = [
+      "👩🏽‍💻 Welcome to Hawatif’s Brain Terminal v1.0.7...",
+      "🔍 Scanning cognitive system...",
+      "✅ Reflection logs detected from the past month.",
+      "💾 Loading modules: mindset | effort | curiosity | growth",
+
+      "📚 MODULE: Academic Excellence",
+      "🧠 Lecture by Dr. C (Oxford Experience)",
+      "  > Insight: Even the best start off overwhelmed. Progress is personal.",
+      "💡 Key Takeaways:",
+      "  - Start with small wins.",
+      "  - Environment matters — find your tribe.",
+      "  - You’re not 'bad at something' — you're just early.",
+      "📘 Applied in University:",
+      "  - Asking questions without shame.",
+      "  - Breaking study into focused sessions.",
+      "  - Practicing Retrieval Method — not just rereading.",
+
+      "🛡 MODULE: Cybersecurity",
+      "⚠️ System Alert: User was a COMPLETE beginner.",
+      "📈 Status: Learning activated...",
+      "Topics Covered:",
+      "  - What is security? What are you protecting?",
+      "  - Offensive vs Defensive security",
+      "  - Types of attacks, firewalls, ethical hacking",
+      "🌪 Real talk:",
+      "  > 'I was confused at first. Like… completely overwhelmed. But I didn’t quit.'",
+      "💪 Progress:",
+      "  - Understood red team vs blue team",
+      "  - Learnt practical security thinking",
+
+      "💻 MODULE: Git & GitHub",
+      "⏱ Loading: My favourite lesson 🔁",
+      "Learned:",
+      "  - Git init / commit / push / pull",
+      "  - What version control really means (saving changes like magic)",
+      "✨ Why I loved it:",
+      "  > 'It felt like being a real developer for the first time.'",
+      "  > 'It made me feel *in control* of my code.'",
+      "📂 Mindset Upgrade:",
+      "  - Don’t fear mistakes, just commit and try again",
+      "  - README files = love letters to your future self",
+
+      "🧠 MODULE: Self-Reflection",
+      "👶 I was a beginner at almost everything.",
+      "😰 At times, I felt behind. Slow. Overwhelmed.",
+      "🔥 But I kept showing up. I kept trying.",
+      "🚀 Progress isn't loud. It's quiet. It’s you — learning in silence.",
+      "🛠 Debugging my own mindset:",
+      "  - “I don’t get this” → “I don’t get this *yet*”",
+      "  - “They’re better” → “They’ve just practiced more”",
+      "🎯 My new rule: Show up. Do something. That’s enough.",
+
+      "🏙 MODULE: KamiLimu Framework",
+      "🧩 My reflections:",
+      "  - Growth mindset isn’t optional — it’s *required*.",
+      "  - Support systems matter.",
+      "  - Excellence is a team sport.",
+      "🛡 I learned to:",
+      "  - Speak up in group sessions",
+      "  - Ask for help without shame",
+      "  - Share my wins and struggles honestly",
+      "✨ Core upgrade installed: “I deserve to be here.”",
+
+      "Type: `unlock` below to reveal a secret thought..."
+    ];
+
+    let i = 0;
+    const textElement = document.getElementById("typed-text");
+    const typeSound = document.getElementById("type-sound");
+
+    function typeLine() {
+      if (i < messages.length) {
+        const line = messages[i];
+        let charIndex = 0;
+        const interval = setInterval(() => {
+          if (charIndex < line.length) {
+            textElement.textContent += line[charIndex];
+            charIndex++;
+            typeSound.currentTime = 0;
+            typeSound.play();
+          } else {
+            clearInterval(interval);
+            textElement.innerHTML += "<br><br>";
+            i++;
+            setTimeout(typeLine, 800);
+          }
+        }, 35);
+      }
+    }
+
+    typeLine();
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const input = prompt("Enter terminal command:");
+        if (input && input.toLowerCase().trim() === "unlock") {
+          document.getElementById("secret-message").style.display = "block";
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
